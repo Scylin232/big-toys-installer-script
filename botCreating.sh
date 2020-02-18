@@ -1,9 +1,10 @@
 BOT_TOKEN=$1
 SERVER_IP_ADRESS=$2
+MONGO_URI=$3
 
-if [ $# -lt 2 ]; then
-    echo 1>&2 "$0: Ne vse parametri bili ukazani"
-    exit 2
+if [ $# -lt 3 ]; then
+  echo 1>&2 "$0: Не все параметры указаны, проверьте, указаны-ли через пробел в верном порядке все 3 аргумента. (Токен_бота Айпи_сервера Ссылка_на_базу_данных)"
+  exit 2
 fi;
 
 mkdir bot;
@@ -22,7 +23,7 @@ cd big-toys-telegram/;
 echo '' > .env;
 cat > .env << EOF
 BOT_TOKEN="$BOT_TOKEN"
-MONGO_URI="mongodb+srv://Scybots:lolik232@cluster0-6n63b.mongodb.net/bigToys"
+MONGO_URI="$MONGO_URI"
 REDIS_URL="redis://bittoysdb:yT7RrtGnadwl69TlHglLHzvWkZG5ftBP@redis-18039.c91.us-east-1-3.ec2.cloud.redislabs.com:18039"
 BOT_ALIAS="bigToysShopTelegram"
 EOF
@@ -41,4 +42,4 @@ export default envimorent
 EOF
 yarn build;
 pm2 start app.js --name "front";
-echo "Admin panel zapushena! Address: http://${SERVER_IP_ADRESS}:4201/";
+echo "Адмие панель запущена по ссылке: http://${SERVER_IP_ADRESS}:4201/";
