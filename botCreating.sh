@@ -41,4 +41,4 @@ export default envimorent
 EOF
 yarn build;
 pm2 start app.js --name "front";
-echo "Admin panel zapushena! Address: http://${SERVER_IP_ADRESS}:4501/";
+echo "Admin panel zapushena! Address: http://${SERVER_IP_ADRESS}:4201/";
