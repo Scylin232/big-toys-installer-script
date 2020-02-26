@@ -1,9 +1,10 @@
 BOT_TOKEN=$1
 SERVER_IP_ADRESS=$2
 MONGO_URI=$3
+DEDICATED_SERVER=$4
 
-if [ $# -lt 3 ]; then
-  echo 1>&2 "$0: Не все параметры указаны, проверьте, указаны-ли через пробел в верном порядке все 3 аргумента. (Токен_бота Айпи_сервера Ссылка_на_базу_данных)"
+if [ $# -lt 4 ]; then
+  echo 1>&2 "$0: Не все параметры указаны, проверьте, указаны-ли через пробел в верном порядке все 4 аргумента. (Токен_бота Айпи_сервера Ссылка_на_базу_данных Айпи_ВПС_Сервера)"
   exit 2
 fi;
 
@@ -26,6 +27,7 @@ BOT_TOKEN="$BOT_TOKEN"
 MONGO_URI="$MONGO_URI"
 REDIS_URL="redis://bittoysdb:yT7RrtGnadwl69TlHglLHzvWkZG5ftBP@redis-18039.c91.us-east-1-3.ec2.cloud.redislabs.com:18039"
 BOT_ALIAS="bigToysShopTelegram"
+EASYPAY_URL="http://$DEDICATED_SERVER:4515"
 EOF
 yarn install;
 yarn build;
